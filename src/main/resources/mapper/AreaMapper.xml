@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.example.demo.dao.AreaMapper">
+<mapper namespace="com.example.demo.mapper.AreaMapper">
   <resultMap id="BaseResultMap" type="com.example.demo.entity.Area">
     <id column="id" property="id" />
     <result column="postalcode" property="postalcode" />
@@ -8,29 +8,18 @@
     <result column="type" property="type" />
   </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from area
-    where id = #{id,jdbcType=INTEGER}
+    delete from area where id = #{id}
   </delete>
   <insert id="insert" parameterType="com.example.demo.entity.Area">
-    insert into area (id, postalcode, address, 
-      type)
-    values (#{id,jdbcType=INTEGER}, #{postalcode,jdbcType=INTEGER}, #{address,jdbcType=VARCHAR}, 
-      #{type,jdbcType=INTEGER})
+    insert into area (id, postalcode, address, type) values (#{id}, #{postalcode}, #{address}, #{type})
   </insert>
   <update id="updateByPrimaryKey" parameterType="com.example.demo.entity.Area">
-    update area
-    set postalcode = #{postalcode,jdbcType=INTEGER},
-      address = #{address,jdbcType=VARCHAR},
-      type = #{type,jdbcType=INTEGER}
-    where id = #{id,jdbcType=INTEGER}
+    update area set postalcode = #{postalcode}, address = #{address}, type = #{type} where id = #{id}
   </update>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select id, postalcode, address, type
-    from area
-    where id = #{id}
+  <select id="selectByPrimaryKey" parameterType="int" resultMap="BaseResultMap">
+    select id, postalcode, address, type from area where id = #{id}
   </select>
   <select id="selectAll" resultMap="BaseResultMap">
-    select id, postalcode, address, type
-    from area
+    select id, postalcode, address, type from area
   </select>
 </mapper>

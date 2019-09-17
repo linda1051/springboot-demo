@@ -1,4 +1,4 @@
-package com.example.demo.dao;
+package com.example.demo.mapper;
 
 import com.example.demo.entity.Area;
 
@@ -25,7 +25,7 @@ public interface AreaMapper {
      * @param id
      * @return
      */
-    Area selectByPrimaryKey(Integer id);
+    Area selectByPrimaryKey(int id);
 
     /**
      * @author
